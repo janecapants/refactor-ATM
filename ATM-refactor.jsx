@@ -14,21 +14,43 @@ return (
  
 
 const Account = () => {
-  let deposit = 0; // state of this transaction
+  let deposit = 0; 
 const [totalState, setTotalState] = React.useState(0);
 const [isDeposit, setIsDeposit] = React.useState(true);
+const [atmMode, setAtmMode] = React.useState('');
+const [validTransaction, setValidTransaction] = React.useState(false);
+
 
 let status = `Account Balance $ ${totalState}`;
 console.log('Account Rendered');
 const handleChange = event => {
   console.log(`handleChange ${event.target.value}`);
   deposit = Number(event.target.value);
+  if (Number(event.target.value) <= 0) {
+      return setValidTransaction(false);
+    }
+    if (atmMode === 'Cash Back' && Number(event.target.value) > totalState) {
+      setValidTransaction(false);
+    } else {
+      setValidTransaction(true);
+    }
+    setDeposit(Number(event.target.value));
 };
 const handleSubmit = () => {
   let newTotal = isDeposit ? totalState + deposit: totalState - deposit;
   setTotalState(newTotal);
   event.preventDefault();
 };
+  const handleModeSelect = (event) => {
+    console.log(event.target.value);
+    setAtmMode(event.target.value);
+    setValidTransaction(false);
+    if (event.target.value === 'Deposit') {
+      setIsDeposit(true);
+    } else {
+      setIsDeposit(false);
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <h2 id = 'total'>{status} </h2>
