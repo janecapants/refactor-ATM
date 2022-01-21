@@ -54,16 +54,7 @@ const handleSubmit = (event) => {
   return (
     <form onSubmit={handleSubmit}>
       <h2 id = 'total'>{status} </h2>
-<label>Select an action below to continue</label>
-        <select onChange={(e) => handleModeSelect(e)} name="mode" id="mode-select">
-          <option id="no-selection" value=""></option>
-          <option id="deposit-selection" value="Deposit">
-            Deposit
-          </option>
-          <option id="cashback-selection" value="Cash Back">
-            Cash Back
-          </option>
-        </select>
+
       <button onClick={() =>setIsDeposit(true)}>Deposit</button>
       <button onClick={() =>setIsDeposit(false)}>Withdraw</button>
        
