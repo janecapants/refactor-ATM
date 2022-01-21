@@ -1,0 +1,51 @@
+button {
+    background-color: darkgreen;
+    border: 6px solid cyan;
+    border-radius: 45px;
+    width: 250px;
+    color: black
+    ;
+  }
+  h1{
+    color: white;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+    position: relative;
+    left: 400px;
+    font-size: 80px;
+    
+    }
+
+  h2{
+    color: white;
+    font-size: 70px;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-family: OCR A Std, monospace	;
+  }
+
+h3{
+    color: white;
+    font-size: 60px;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  font-family: OCR A Std, monospace	;
+}
+
+select{
+    color: black;
+    font-size: 30px;
+  
+  font-family: OCR A Std, monospace	;
+}
+
+input{
+    color: black;
+    font-size: 30px;
+    
+  font-family: OCR A Std, monospace	;
+}
+    
+ body{
+   background:url("homer.jpg")
+ }
