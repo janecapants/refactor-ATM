@@ -14,7 +14,7 @@ return (
  
 
 const Account = () => {
-  let deposit = 0; 
+  const [deposit, setDeposit] = React.useState(0);
 const [totalState, setTotalState] = React.useState(0);
 const [isDeposit, setIsDeposit] = React.useState(true);
 const [atmMode, setAtmMode] = React.useState('');
@@ -22,8 +22,8 @@ const [validTransaction, setValidTransaction] = React.useState(false);
 
 
 let status = `Account Balance $ ${totalState}`;
-console.log('Account Rendered');
-const handleChange = event => {
+console.log(`Account Rendered ${isDeposit}`);
+const handleChange = (event) => {
   console.log(`handleChange ${event.target.value}`);
   deposit = Number(event.target.value);
   if (Number(event.target.value) <= 0) {
@@ -36,7 +36,7 @@ const handleChange = event => {
     }
     setDeposit(Number(event.target.value));
 };
-const handleSubmit = () => {
+const handleSubmit = (event) => {
   let newTotal = isDeposit ? totalState + deposit: totalState - deposit;
   setTotalState(newTotal);
   event.preventDefault();
@@ -54,9 +54,20 @@ const handleSubmit = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h2 id = 'total'>{status} </h2>
+<label>Select an action below to continue</label>
+        <select onChange={(e) => handleModeSelect(e)} name="mode" id="mode-select">
+          <option id="no-selection" value=""></option>
+          <option id="deposit-selection" value="Deposit">
+            Deposit
+          </option>
+          <option id="cashback-selection" value="Cash Back">
+            Cash Back
+          </option>
+        </select>
       <button onClick={() =>setIsDeposit(true)}>Deposit</button>
       <button onClick={() =>setIsDeposit(false)}>Withdraw</button>
-       <ATMDeposit onChange={handleChange} isDeposit={isDeposit}></ATMDeposit>
+       
+<ATMDeposit onChange={handleChange} isDeposit={isDeposit} isValid={validTransaction}></ATMDeposit>
     </form>
   );
 };
